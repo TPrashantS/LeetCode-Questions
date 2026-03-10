@@ -17,7 +17,7 @@ class Solution {
             return k == 1 && j <= limit ? 1 : 0;
         }
         if (j == 0) {
-            return k == 0 && i <= limit ? 1 : 0;
+            return k == 0 && i <= limit ? 1 : 0
         }
         if (f[i][j][k] != null) {
             return f[i][j][k];
