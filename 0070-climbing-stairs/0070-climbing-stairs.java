@@ -1,26 +1,24 @@
 class Solution {
     public int climbStairs(int n) {
-        int[] dp = new int[n+1];
+        int[] dp = new int[n+2];
         Arrays.fill(dp, -1);
-        return usingdp(n, dp);
+        return usingdp(0, n, dp);
     }
 
-    public int usingdp(int n, int[] dp){
-        //base case
-        if(n==0){
-            dp[0] = 1;
+    public int usingdp(int curr, int n, int[] dp){
+        if(curr == n){
+            dp[curr]=1;
             return 1;
         }
-        if(n==1){
-            dp[1] = 1;
-            return 1;
+        if(curr>n){
+            dp[curr]=0;
+            return 0;
         }
-        
-        if(dp[n]!=-1){
-            return dp[n];
+        if(dp[curr]!=-1){
+            return dp[curr];
         }
-        
-        //recurrence relation
-        return dp[n] = usingdp(n-1, dp) + usingdp(n-2, dp);
+        int take1 = usingdp(curr+1, n, dp);
+        int take2 = usingdp(curr+2, n, dp);
+        return dp[curr] = take1+take2;
     }
 }
